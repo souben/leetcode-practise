@@ -1,18 +1,19 @@
 
 func majorityElement(nums []int) int {
-    slices.Sort(nums)
-    c := 1
-    p := nums[0]
+    res := nums[0]
+    c := 1 
     for i := 1; i < len(nums); i++ {
-        if nums[i] == p { 
-            c += 1; 
-            if c == len(nums)/2+1 {
-                return p
-            }
-        }else{
-            p = nums[i]
+        if nums[i] == res {
+            c += 1
+            continue
+        }
+
+        if c == 0 {
+            res = nums[i]
             c = 1
+        }else{
+            c -= 1
         }
     }
-    return p
+    return res
 }
